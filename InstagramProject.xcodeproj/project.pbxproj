@@ -27,7 +27,7 @@
 /* Begin PBXFileReference section */
 		364526F21C8A90DF001D49BC /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		364526F41C8AB34C001D49BC /* InstagramCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramCell.swift; sourceTree = "<group>"; };
-		365F25161C854D5E005F43A3 /* Fondue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fondue.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		365F25161C854D5E005F43A3 /* InstagramProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		365F25191C854D5E005F43A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		365F251E1C854D5E005F43A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		365F25201C854D5E005F43A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -102,7 +102,7 @@
 		365F25171C854D5E005F43A3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				365F25161C854D5E005F43A3 /* Fondue.app */,
+				365F25161C854D5E005F43A3 /* InstagramProject.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,9 +143,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		365F25151C854D5E005F43A3 /* Fondue */ = {
+		365F25151C854D5E005F43A3 /* InstagramProject */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 365F25281C854D5E005F43A3 /* Build configuration list for PBXNativeTarget "Fondue" */;
+			buildConfigurationList = 365F25281C854D5E005F43A3 /* Build configuration list for PBXNativeTarget "InstagramProject" */;
 			buildPhases = (
 				4BD79C8B82799FD605F43A79 /* Check Pods Manifest.lock */,
 				365F25121C854D5E005F43A3 /* Sources */,
@@ -158,9 +158,9 @@
 			);
 			dependencies = (
 			);
-			name = Fondue;
+			name = InstagramProject;
 			productName = InstagramProject;
-			productReference = 365F25161C854D5E005F43A3 /* Fondue.app */;
+			productReference = 365F25161C854D5E005F43A3 /* InstagramProject.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -179,7 +179,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 365F25111C854D5E005F43A3 /* Build configuration list for PBXProject "Fondue" */;
+			buildConfigurationList = 365F25111C854D5E005F43A3 /* Build configuration list for PBXProject "InstagramProject" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -192,7 +192,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				365F25151C854D5E005F43A3 /* Fondue */,
+				365F25151C854D5E005F43A3 /* InstagramProject */,
 			);
 		};
 /* End PBXProject section */
@@ -388,7 +388,7 @@
 				INFOPLIST_FILE = InstagramProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.candy.InstagramProject;
-				PRODUCT_NAME = Fondue;
+				PRODUCT_NAME = InstagramProject;
 			};
 			name = Debug;
 		};
@@ -400,14 +400,14 @@
 				INFOPLIST_FILE = InstagramProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.candy.InstagramProject;
-				PRODUCT_NAME = Fondue;
+				PRODUCT_NAME = InstagramProject;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		365F25111C854D5E005F43A3 /* Build configuration list for PBXProject "Fondue" */ = {
+		365F25111C854D5E005F43A3 /* Build configuration list for PBXProject "InstagramProject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				365F25261C854D5E005F43A3 /* Debug */,
@@ -416,7 +416,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		365F25281C854D5E005F43A3 /* Build configuration list for PBXNativeTarget "Fondue" */ = {
+		365F25281C854D5E005F43A3 /* Build configuration list for PBXNativeTarget "InstagramProject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				365F25291C854D5E005F43A3 /* Debug */,

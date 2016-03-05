@@ -2,9 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/Candy/Downloads/InstagramProject/Fondue.xcodeproj">
+      location = "group:/Users/Candy/Downloads/InstagramProject/InstagramProject.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:InstagramProject.xcodeproj">
    </FileRef>
 </Workspace>

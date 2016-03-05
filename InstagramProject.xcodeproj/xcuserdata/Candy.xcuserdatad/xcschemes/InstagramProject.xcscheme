@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "365F25151C854D5E005F43A3"
-            BuildableName = "Fondue.app"
-            BlueprintName = "Fondue"
-            ReferencedContainer = "container:Fondue.xcodeproj">
+            BuildableName = "InstagramProject.app"
+            BlueprintName = "InstagramProject"
+            ReferencedContainer = "container:InstagramProject.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "365F25151C854D5E005F43A3"
-            BuildableName = "Fondue.app"
-            BlueprintName = "Fondue"
-            ReferencedContainer = "container:Fondue.xcodeproj">
+            BuildableName = "InstagramProject.app"
+            BlueprintName = "InstagramProject"
+            ReferencedContainer = "container:InstagramProject.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
