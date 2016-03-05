@@ -27,9 +27,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         tableView.dataSource = self
         tableView.delegate = self
-        //tableView.tableFooterView = UIView()
-        
-        print("tableView.frame.size: \(tableView.frame.size)")
+        tableView.tableFooterView = UIView()
         
         
         menuItemNameArray = ["Home", "Capture", "Profile"]
@@ -46,9 +44,12 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         hamburgerViewController?.contentViewController = homeNavigationController
         
+    }
+    
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         setGradientBackground()
- 
-        
     }
 
     
@@ -83,6 +84,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCellWithIdentifier("MenuCell", forIndexPath: indexPath) as! MenuCell
         
         cell.menuIconImageView.image = UIImage(named: "\(menuItemNameArray[indexPath.row])")
+        
+        
         cell.menuItemNameLabel.text = "\(menuItemNameArray[indexPath.row])"
         
         cell.separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
@@ -99,7 +102,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let  headerCell = tableView.dequeueReusableCellWithIdentifier("HeaderCell") as! CustomHeaderCell
+        let  headerCell = tableView.dequeueReusableCellWithIdentifier("HeaderCell") as! MenuHeaderCell
         headerCell.profileImageView.image = UIImage(named: "ProfileImage")
         headerCell.profileNameLabel.text = "Crying"
         

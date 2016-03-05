@@ -10,15 +10,12 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "1456887408_one_user_data_graphic_info_infos.png",
+      "filename" : "round-add-button.png",
       "scale" : "3x"
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
-  },
-  "properties" : {
-    "template-rendering-intent" : "original"
   }
 }

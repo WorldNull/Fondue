@@ -1,24 +1,24 @@
 //
-//  CustomHeaderCell.swift
+//  InstagramCell.swift
 //  Fondue
 //
-//  Created by YouGotToFindWhatYouLove on 3/4/16.
+//  Created by YouGotToFindWhatYouLove on 3/5/16.
 //  Copyright © 2016 Candy. All rights reserved.
 //
 
 import UIKit
 
-class CustomHeaderCell: UITableViewCell {
+class InstagramCell: UITableViewCell {
     
-    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var postImageView: UIImageView!
+        
+    @IBOutlet weak var captionLabel: UILabel!
     
-    @IBOutlet weak var profileNameLabel: UILabel!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
-        self.profileImageView.clipsToBounds = true;
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
