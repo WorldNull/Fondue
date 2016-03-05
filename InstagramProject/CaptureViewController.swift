@@ -8,19 +8,11 @@
 
 import UIKit
 
-class CaptureViewController: BaseViewController {
+class CaptureViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Hide navigation bar's subviews
-        //self.navigationItem.setHidesBackButton(true, animated: true)
-        //self.navigationController?.navigationBar.subviews[1].hidden = true
-        //print(self.navigationController?.navigationBar.subviews.isEmpty)
-        
-        //addSlideMenuButton()
-    
-        //rightSwipe()
     }
 
     override func didReceiveMemoryWarning() {

@@ -19,6 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
+        
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogIn", name: userDidLoginNotification, object: nil)
+        
+        
+        
+        
         // Initialize Parse
         // Set applicationId and server based on the values in the Heroku settings.
         // clientKey is not used on Parse open source unless explicitly configured
@@ -32,12 +40,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         if PFUser.currentUser() != nil {
-            let vc = storyboard.instantiateViewControllerWithIdentifier("ToHomeViewController") as! UINavigationController
-            window?.rootViewController = vc
+            userDidLogIn()
         }
         
         
         return true
+    }
+    
+    func userDidLogout() {
+        let vc = storyboard.instantiateInitialViewController()! as UIViewController
+        window?.rootViewController = vc
+        
+        
+    }
+    
+    func userDidLogIn() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        
+        let hamburgerViewControler = storyboard.instantiateViewControllerWithIdentifier("HamburgerViewController") as! HamburgerViewController
+        
+        let menuViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController") as! MenuViewController
+        
+        menuViewController.hamburgerViewController = hamburgerViewControler
+        
+        hamburgerViewControler.menuViewController = menuViewController
+        window?.rootViewController = hamburgerViewControler
+
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {

@@ -16,15 +16,63 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var passwordField: UITextField!
     
+    @IBOutlet weak var centerAlignUsername: NSLayoutConstraint!
 
+    @IBOutlet weak var centerAlignPassword: NSLayoutConstraint!
+    
+    @IBOutlet weak var loginButton: UIButton!
+    
+    @IBOutlet weak var registerButton: UIButton!
+    
+    @IBOutlet weak var appNameLabel: UILabel!
+    
+    
+    var originRegisterFrame: CGRect!
+    var originLoginFrame: CGRect!
+    var originTintColor: UIColor!
+    var tappedTwice: Bool!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        usernameField.backgroundColor = UIColor.clearColor()
-        passwordField.backgroundColor = UIColor.clearColor()
+        usernameField.alpha = 0.7
+        passwordField.alpha = 0.7
 
         usernameField.becomeFirstResponder()
+        
+        originRegisterFrame = registerButton.frame
+        originLoginFrame = loginButton.frame
+        originTintColor = registerButton.tintColor
+        tappedTwice = false
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        centerAlignUsername.constant -= view.bounds.width
+        centerAlignPassword.constant -= view.bounds.width
+        loginButton.alpha = 0.0
+        registerButton.alpha = 0.0
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIView.animateWithDuration(0.5, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+            self.centerAlignUsername.constant += self.view.bounds.width
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+        
+        UIView.animateWithDuration(0.5, delay: 0.3, options: .CurveEaseOut, animations: {
+            self.centerAlignPassword.constant += self.view.bounds.width
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+        
+        UIView.animateWithDuration(0.5, delay: 0.4, options: .CurveEaseOut, animations: {
+            self.loginButton.alpha = 1
+            self.registerButton.alpha = 1
+            }, completion: nil)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,7 +84,20 @@ class LoginViewController: UIViewController {
         PFUser.logInWithUsernameInBackground(usernameField.text!, password: passwordField.text!) { (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
                 print("you're logged in!")
-                self.performSegueWithIdentifier("loginSegue", sender: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName(userDidLoginNotification, object: nil)
+            } else {
+                let bounds = self.loginButton.bounds
+                UIView.animateWithDuration(1.0, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: [], animations: {
+                    self.loginButton.bounds = CGRect(x: bounds.origin.x - 10, y: bounds.origin.y, width: bounds.size.width + 25, height: bounds.size.height)
+                    self.loginButton.tintColor = UIColor.redColor()
+                    self.loginButton.enabled = false
+                    }, completion: { void in
+                        self.loginButton.enabled = true
+                        self.loginButton.tintColor = self.originTintColor
+                        self.loginButton.bounds = self.originLoginFrame
+                        
+                
+                })
             }
         }
     }
@@ -50,23 +111,49 @@ class LoginViewController: UIViewController {
         newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             if success {
                 print("Yay, created a user!")
-                self.performSegueWithIdentifier("loginSegue", sender: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName(userDidLoginNotification, object: nil)
             } else {
                 print(error?.localizedDescription)
                 if error?.code == 202 {
                     print("Username is taken")
+                    let bounds = self.registerButton.bounds
+                    UIView.animateWithDuration(1.0, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: [], animations: {
+                        self.registerButton.bounds = CGRect(x: bounds.origin.x - 10, y: bounds.origin.y, width: bounds.size.width + 25, height: bounds.size.height)
+                        self.registerButton.enabled = false
+                        self.registerButton.tintColor = UIColor.redColor()
+                        
+                        }, completion: { void in
+                        self.registerButton.enabled = true
+                        self.registerButton.tintColor = self.originTintColor
+                        self.registerButton.bounds = self.originRegisterFrame
+                        }
+                    )
+ 
+                    
                 }
             }
         }
         
     }
     
-    @IBAction func didPinch(sender: UIPinchGestureRecognizer) {
-        let scale = sender.scale
-        let imageView = sender.view as! UIImageView
-        
-        imageView.transform = CGAffineTransformScale(imageView.transform, scale, scale)
-        sender.scale = 1
+    
+    @IBAction func didTap(sender: UITapGestureRecognizer) {
+        if tappedTwice == true {
+            usernameField.hidden = false
+            passwordField.hidden = false
+            registerButton.hidden = false
+            loginButton.hidden = false
+            appNameLabel.hidden = false
+            tappedTwice = false
+            
+        } else {
+            usernameField.hidden = true
+            passwordField.hidden = true
+            registerButton.hidden = true
+            loginButton.hidden = true
+            appNameLabel.hidden = true
+            tappedTwice = true
+        }
     }
 
     

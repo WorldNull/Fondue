@@ -7,17 +7,19 @@
 //
 
 import UIKit
+import Parse
 
-class ProfileViewController: BaseViewController {
+let userDidLogoutNotification = "userDidLogoutNotification"
+let userDidLoginNotification = "userDidLoginNotification"
+
+
+class ProfileViewController: UIViewController {
+    
+    let userDidLogoutNotification = "userDidLogoutNotification"
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Hide navigation bar's subviews
-        
-        //self.navigationItem.setHidesBackButton(true, animated: true)
-         
-
 
     }
 
@@ -25,6 +27,14 @@ class ProfileViewController: BaseViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func onLogOut(sender: AnyObject) {
+        PFUser.logOut()
+         NSNotificationCenter.defaultCenter().postNotificationName(userDidLogoutNotification, object: nil)
+
+        
+    }
+    
     
 
     /*

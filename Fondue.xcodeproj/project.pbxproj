@@ -8,33 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		365F251A1C854D5E005F43A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F25191C854D5E005F43A3 /* AppDelegate.swift */; };
-		365F251C1C854D5E005F43A3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F251B1C854D5E005F43A3 /* BaseViewController.swift */; };
 		365F251F1C854D5E005F43A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 365F251D1C854D5E005F43A3 /* Main.storyboard */; };
 		365F25211C854D5E005F43A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 365F25201C854D5E005F43A3 /* Assets.xcassets */; };
 		365F25241C854D5E005F43A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 365F25221C854D5E005F43A3 /* LaunchScreen.storyboard */; };
 		365F252C1C8554C2005F43A3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F252B1C8554C2005F43A3 /* LoginViewController.swift */; };
-		365F252E1C857BFA005F43A3 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F252D1C857BFA005F43A3 /* MenuViewController.swift */; };
 		365F25321C862818005F43A3 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F25311C862818005F43A3 /* MenuCell.swift */; };
 		365F253A1C8763BA005F43A3 /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F25391C8763BA005F43A3 /* CaptureViewController.swift */; };
 		365F253C1C8763CB005F43A3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F253B1C8763CB005F43A3 /* ProfileViewController.swift */; };
 		365F253E1C880E83005F43A3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F253D1C880E83005F43A3 /* HomeViewController.swift */; };
+		365F25401C895C5A005F43A3 /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F253F1C895C5A005F43A3 /* HamburgerViewController.swift */; };
+		365F25421C895CF6005F43A3 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F25411C895CF6005F43A3 /* MenuViewController.swift */; };
+		365F25441C89EB88005F43A3 /* CustomHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F25431C89EB88005F43A3 /* CustomHeaderCell.swift */; };
 		6CEAF896F62660A34AC434C9 /* Pods_InstagramProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D531D26F61841D173FC36149 /* Pods_InstagramProject.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		365F25161C854D5E005F43A3 /* Fondue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fondue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		365F25191C854D5E005F43A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		365F251B1C854D5E005F43A3 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		365F251E1C854D5E005F43A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		365F25201C854D5E005F43A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		365F25231C854D5E005F43A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		365F25251C854D5E005F43A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		365F252B1C8554C2005F43A3 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		365F252D1C857BFA005F43A3 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		365F25311C862818005F43A3 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		365F25391C8763BA005F43A3 /* CaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
 		365F253B1C8763CB005F43A3 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		365F253D1C880E83005F43A3 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		365F253F1C895C5A005F43A3 /* HamburgerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerViewController.swift; sourceTree = "<group>"; };
+		365F25411C895CF6005F43A3 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		365F25431C89EB88005F43A3 /* CustomHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomHeaderCell.swift; sourceTree = "<group>"; };
 		497BD5F64553B014C24EA4AD /* Pods-InstagramProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramProject/Pods-InstagramProject.debug.xcconfig"; sourceTree = "<group>"; };
 		BFAC84ABAAE2C8938E7169F3 /* Pods-InstagramProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramProject/Pods-InstagramProject.release.xcconfig"; sourceTree = "<group>"; };
 		D531D26F61841D173FC36149 /* Pods_InstagramProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,17 +76,18 @@
 			isa = PBXGroup;
 			children = (
 				365F25191C854D5E005F43A3 /* AppDelegate.swift */,
-				365F251B1C854D5E005F43A3 /* BaseViewController.swift */,
 				365F251D1C854D5E005F43A3 /* Main.storyboard */,
 				365F25201C854D5E005F43A3 /* Assets.xcassets */,
 				365F25221C854D5E005F43A3 /* LaunchScreen.storyboard */,
 				365F25251C854D5E005F43A3 /* Info.plist */,
 				365F252B1C8554C2005F43A3 /* LoginViewController.swift */,
-				365F252D1C857BFA005F43A3 /* MenuViewController.swift */,
 				365F25311C862818005F43A3 /* MenuCell.swift */,
 				365F25391C8763BA005F43A3 /* CaptureViewController.swift */,
 				365F253B1C8763CB005F43A3 /* ProfileViewController.swift */,
 				365F253D1C880E83005F43A3 /* HomeViewController.swift */,
+				365F253F1C895C5A005F43A3 /* HamburgerViewController.swift */,
+				365F25411C895CF6005F43A3 /* MenuViewController.swift */,
+				365F25431C89EB88005F43A3 /* CustomHeaderCell.swift */,
 			);
 			name = Fondue;
 			path = InstagramProject;
@@ -231,13 +234,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				365F252C1C8554C2005F43A3 /* LoginViewController.swift in Sources */,
+				365F25441C89EB88005F43A3 /* CustomHeaderCell.swift in Sources */,
 				365F253A1C8763BA005F43A3 /* CaptureViewController.swift in Sources */,
 				365F25321C862818005F43A3 /* MenuCell.swift in Sources */,
 				365F253E1C880E83005F43A3 /* HomeViewController.swift in Sources */,
-				365F251C1C854D5E005F43A3 /* BaseViewController.swift in Sources */,
+				365F25421C895CF6005F43A3 /* MenuViewController.swift in Sources */,
+				365F25401C895C5A005F43A3 /* HamburgerViewController.swift in Sources */,
 				365F253C1C8763CB005F43A3 /* ProfileViewController.swift in Sources */,
 				365F251A1C854D5E005F43A3 /* AppDelegate.swift in Sources */,
-				365F252E1C857BFA005F43A3 /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
