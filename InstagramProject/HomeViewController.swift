@@ -133,8 +133,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    /*
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width/*320*/, height: 50))
         headerView.backgroundColor = UIColor(white: 1, alpha: 0.9)
         
         let profileView = UIImageView(frame: CGRect(x: 10, y: 10, width: 30, height: 30))
@@ -156,13 +157,19 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         nameView.text = "Testing"
         headerView.addSubview(nameView)
         
-        //let creationTimeView = UILabel(frame: CGRect(x: 70, y: 15, width: 200, height: 20))
-        //creationTimeView
+        
+//        let creationTimeView = UILabel(frame: CGRect(x: , y: 15, width: 200, height: 20))
+//        creationTimeView.font = UIFont.boldSystemFontOfSize(13.0)
+//        creationTimeView.text = "01/02/2015"
+//        headerView.addSubview(creationTimeView)
+
+        
         
         
         return headerView
-    }
 
+    }
+    */
     
     
     

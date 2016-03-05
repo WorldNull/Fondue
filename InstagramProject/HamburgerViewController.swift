@@ -28,14 +28,18 @@ class HamburgerViewController: UIViewController {
                 oldMenuViewController.view.removeFromSuperview()
                 oldMenuViewController.didMoveToParentViewController(nil)
             }
+//            
+//            menuViewController.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height)
+//            menuView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height)
             
-            menuViewController.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height)
-            menuView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height)
+            self.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height)
+            
             menuView.addSubview(menuViewController.view)
             
-            print(self.view.frame.size)
-            print("menuView.frame.size: \(menuView.frame.size)")
-            print("menuViewController.view.frame.size\(menuViewController.view.frame.size)")
+            print(self.view.frame)
+            
+            print("menuView.frame.size: \(menuView.frame)")
+            print("menuViewController.view.frame.size\(menuViewController.view.frame)")
 
         }
     }
@@ -91,6 +95,7 @@ class HamburgerViewController: UIViewController {
     @IBAction func onSwipeGestureRight(sender: UISwipeGestureRecognizer) {
         UIView.animateWithDuration(0.5, delay: 0, options: [], animations: { () -> Void in
             self.leftMarginConstraint.constant = self.view.frame.size.width / 2
+//            self.view.updateConstraintsIfNeeded()
             self.animateTable()
             self.view.layoutIfNeeded()
         
