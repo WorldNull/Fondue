@@ -26,6 +26,9 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
+         self.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+        
+        
         let menuFrame = CGRect(x: 8, y: 0, width: 40, height: (self.navigationController!.navigationBar.frame.height))
             
         menuButton = UIButton(frame: menuFrame)
@@ -133,43 +136,44 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    /*
+    
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width/*320*/, height: 50))
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.width*100))
+        print(self.view.frame.size.width)
         headerView.backgroundColor = UIColor(white: 1, alpha: 0.9)
         
-        let profileView = UIImageView(frame: CGRect(x: 10, y: 10, width: 30, height: 30))
+        let profileView = UIImageView(frame: CGRect(x: 8, y: 3, width: self.view.frame.size.width*0.1, height: self.view.frame.size.width*0.1))
         profileView.clipsToBounds = true
-        profileView.layer.cornerRadius = 15;
+        profileView.layer.cornerRadius = self.view.frame.size.width*0.1/2;
         profileView.layer.borderColor = UIColor(white: 0.7, alpha: 0.8).CGColor
         profileView.layer.borderWidth = 1;
         
         headerView.addSubview(profileView)
-        //let userSection = media[section]
-        //let user = userSection["user"]
-        //let profileUrl = NSURL(string: user!["profile_picture"] as! String)
-        //profileView.setImageWithURL(profileUrl!)
         
-        //let userName = user!["username"] as! String
-        let nameView = UILabel(frame: CGRect(x: 48, y: 15, width: 250, height: 20))
+        let nameView = UILabel(frame: CGRect(x: 55, y: 15, width: 250, height: 20))
         nameView.textColor = UIColor(red: 0, green: 98/255, blue: 193/255, alpha: 1)
         nameView.font = UIFont.boldSystemFontOfSize(14.0)
         nameView.text = "Testing"
         headerView.addSubview(nameView)
         
         
-//        let creationTimeView = UILabel(frame: CGRect(x: , y: 15, width: 200, height: 20))
-//        creationTimeView.font = UIFont.boldSystemFontOfSize(13.0)
-//        creationTimeView.text = "01/02/2015"
-//        headerView.addSubview(creationTimeView)
+        let creationTimeView = UILabel(frame: CGRect(x: self.view.frame.size.width-98, y: 15, width: 200, height: 20))
+        creationTimeView.font = UIFont.boldSystemFontOfSize(12.0)
+        let postSection = posts![section]
+        let date = postSection.createdAt
+        var dateFormatter = NSDateFormatter()
+        
+        //format style. Browse online to get a format that fits your needs.
+        dateFormatter.dateFormat = "hh:mm MM/dd/YY"
+        var dateString = dateFormatter.stringFromDate(date!)
+        creationTimeView.text = dateString
+        headerView.addSubview(creationTimeView)
 
-        
-        
+
         
         return headerView
 
     }
-    */
     
     
     

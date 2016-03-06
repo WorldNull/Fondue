@@ -25,13 +25,14 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height)
+        
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
         
-        
         menuItemNameArray = ["Home", "Capture", "Profile"]
-
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         homeNavigationController = storyboard.instantiateViewControllerWithIdentifier("HomeNavigationController")
@@ -41,8 +42,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         viewControllers.append(homeNavigationController)
         viewControllers.append(captureNavigationController)
         viewControllers.append(profileNavigationController)
-        
+
         hamburgerViewController?.contentViewController = homeNavigationController
+        
+        hamburgerViewController?.contentViewController.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
         
     }
     
