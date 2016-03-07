@@ -44,7 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDidLogIn()
         }
         
-        
         return true
     }
     

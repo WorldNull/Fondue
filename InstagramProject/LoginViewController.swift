@@ -108,6 +108,11 @@ class LoginViewController: UIViewController {
         newUser.username = usernameField.text
         newUser.password = passwordField.text
         
+        let imageData = UIImagePNGRepresentation(UIImage(named: "DefaultProfileImage")!)
+        let imageFile = PFFile(name: "image.png", data: imageData!)
+        
+        newUser["ProfileImage"] = imageFile
+        
         newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             if success {
                 print("Yay, created a user!")

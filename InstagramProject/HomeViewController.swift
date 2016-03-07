@@ -16,7 +16,15 @@ class HomeViewController: UIViewController {
     
     var menuToggleOn: Bool!
     var menuButton: UIButton!
-    var posts: [PFObject]?
+   // var posts: [PFObject]?
+    var isMoreDataLoading = false
+    var loadingMoreView:InfiniteScrollActivityView?
+    var query: PFQuery!
+    var tap: UITapGestureRecognizer!
+    var postProfileView = UIImageView()
+    var postProfileName = String()
+
+
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -26,7 +34,7 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-         self.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+        self.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
         
         
         let menuFrame = CGRect(x: 8, y: 0, width: 40, height: (self.navigationController!.navigationBar.frame.height))
@@ -41,23 +49,36 @@ class HomeViewController: UIViewController {
         
         menuToggleOn = false
         
+        // Set up Infinite Scroll loading indicator
+        let frame = CGRectMake(0, tableView.contentSize.height, tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight)
+        loadingMoreView = InfiniteScrollActivityView(frame: frame)
+        loadingMoreView!.hidden = true
+        tableView.addSubview(loadingMoreView!)
+        
+        var insets = tableView.contentInset;
+        insets.bottom += InfiniteScrollActivityView.defaultHeight;
+        tableView.contentInset = insets
+        
         
         // construct PFQuery
-        let query = PFQuery(className: "Post")
+        query = PFQuery(className: "Post")
         query.orderByDescending("createdAt")
         query.includeKey("author")
         query.limit = 20
         
         query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
             if let posts = posts {
-                self.posts = posts
+                SharingPosts.sharedInstance.posts = posts
                 self.tableView.reloadData()
             } else {
                 print(error?.localizedDescription)
             }
         }
-        
-
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+        self.navigationController?.navigationBar.subviews[1].hidden = false
     }
     
     func onSlideMenuButtonPressed() {
@@ -91,17 +112,31 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func handleTap() {
+        performSegueWithIdentifier("ToProfilePage", sender: nil)
+    }
+    
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "ToProfilePage" {
+            let vc = segue.destinationViewController as! ProfilePageViewController
+            if let postProfileImage = postProfileView.image {
+                vc.profileImage = postProfileImage
+                vc.profileName = postProfileName
+                
+                print("segue: \(postProfileName)")
+            }
+        }
+        
     }
-    */
+    
 
 }
 
@@ -112,7 +147,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("InstagramCell", forIndexPath: indexPath) as! InstagramCell
-        let postSection = posts![indexPath.section]
+        let postSection = SharingPosts.sharedInstance.posts![indexPath.section]
         let imageFile = postSection["media"] as! PFFile
         
         imageFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
@@ -129,7 +164,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if let posts = posts {
+        if let posts = SharingPosts.sharedInstance.posts {
             return posts.count
         } else {
             return 0
@@ -138,11 +173,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.width*100))
-        print(self.view.frame.size.width)
+        //print(self.view.frame.size.width)
         headerView.backgroundColor = UIColor(white: 1, alpha: 0.9)
         
-        let profileView = UIImageView(frame: CGRect(x: 8, y: 3, width: self.view.frame.size.width*0.1, height: self.view.frame.size.width*0.1))
+        let profileView = UIImageView(frame: CGRect(x: 8, y: 4, width: self.view.frame.size.width*0.1, height: self.view.frame.size.width*0.1))
         profileView.clipsToBounds = true
         profileView.layer.cornerRadius = self.view.frame.size.width*0.1/2;
         profileView.layer.borderColor = UIColor(white: 0.7, alpha: 0.8).CGColor
@@ -150,16 +186,42 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         
         headerView.addSubview(profileView)
         
-        let nameView = UILabel(frame: CGRect(x: 55, y: 15, width: 250, height: 20))
+        let nameView = UILabel(frame: CGRect(x: 55, y: 14, width: 250, height: 20))
         nameView.textColor = UIColor(red: 0, green: 98/255, blue: 193/255, alpha: 1)
         nameView.font = UIFont.boldSystemFontOfSize(14.0)
-        nameView.text = "Testing"
         headerView.addSubview(nameView)
         
+        let profileImageTap = UITapGestureRecognizer(target: self, action: Selector("handleTap"))
+        let profileNameTap = UITapGestureRecognizer(target: self, action: Selector("handleTap"))
+
+
+        profileView.userInteractionEnabled = true
+        nameView.userInteractionEnabled = true
+        profileView.addGestureRecognizer(profileImageTap)
+        nameView.addGestureRecognizer(profileNameTap)
         
-        let creationTimeView = UILabel(frame: CGRect(x: self.view.frame.size.width-98, y: 15, width: 200, height: 20))
+        let creationTimeView = UILabel(frame: CGRect(x: self.view.frame.size.width-98, y: 14, width: 200, height: 20))
         creationTimeView.font = UIFont.boldSystemFontOfSize(12.0)
-        let postSection = posts![section]
+        let postSection = SharingPosts.sharedInstance.posts![section]
+        
+        let currentUser = postSection["author"] as! PFUser
+        let imageFile = currentUser["ProfileImage"] as? PFFile
+        postProfileName = currentUser.username!
+        print("postProfileName: \(postProfileName)")
+        
+        if let imageFile = imageFile {
+            imageFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                if error == nil {
+                    if let imageData = imageData {
+                        profileView.image = UIImage(data: imageData)
+                        self.postProfileView.image = profileView.image
+                    }
+                }
+            }
+        }
+        nameView.text = currentUser.username
+        
+
         let date = postSection.createdAt
         var dateFormatter = NSDateFormatter()
         
@@ -169,16 +231,61 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         creationTimeView.text = dateString
         headerView.addSubview(creationTimeView)
 
-
         
         return headerView
-
     }
     
-    
-    
-    
-    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50.0
+    }
+
 }
 
+extension HomeViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        // Handle scroll behavior here
+        if (!isMoreDataLoading) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
+                isMoreDataLoading = true
+                
+                // Update position of loadingMoreView, and start loading indicator
+                let frame = CGRectMake(0, tableView.contentSize.height, tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight)
+                loadingMoreView?.frame = frame
+                loadingMoreView!.startAnimating()
+                
+                // ... Code to load more results ...
+                if let posts = SharingPosts.sharedInstance.posts {
+                    // construct PFQuery
+                    query.orderByDescending("createdAt")
+                    query.includeKey("author")
+                    query.limit = query.limit + 20
+                    
+                    query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
+                        if let posts = posts {
+                            SharingPosts.sharedInstance.posts = posts
+                            // Update flag
+                            self.isMoreDataLoading = false
+                            
+                            // Stop the loading indicator
+                            self.loadingMoreView!.stopAnimating()
+                            
+                            self.tableView.reloadData()
+                            
+                        } else {
+                            print(error?.localizedDescription)
+                        }
+                    }
+                    
+                } else {
+                    self.loadingMoreView!.stopAnimating()
+                }
+            }
+        }
+    }
+}
 

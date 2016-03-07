@@ -15,11 +15,37 @@ let userDidLoginNotification = "userDidLoginNotification"
 
 class ProfileViewController: UIViewController {
     
+    
+    @IBOutlet weak var profileImageView: UIImageView!
+    
     let userDidLogoutNotification = "userDidLogoutNotification"
-
+    
+    var profileImagePicker: UIImagePickerController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.height/2
+        
+        profileImagePicker = UIImagePickerController()
+        profileImagePicker.delegate = self
+        profileImagePicker.allowsEditing = true
+        profileImagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        
+        
+        let currentUser = PFUser.currentUser()
+        let imageFile = currentUser!["ProfileImage"] as? PFFile
+        
+        if let imageFile = imageFile {
+            imageFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                if error == nil {
+                    if let imageData = imageData {
+                        self.profileImageView.image = UIImage(data: imageData)
+                    }
+                }
+            }
+        }
+        
+        
 
     }
 
@@ -31,9 +57,12 @@ class ProfileViewController: UIViewController {
     @IBAction func onLogOut(sender: AnyObject) {
         PFUser.logOut()
          NSNotificationCenter.defaultCenter().postNotificationName(userDidLogoutNotification, object: nil)
-
-        
     }
+    
+    @IBAction func setProfileImage(sender: AnyObject) {
+        self.presentViewController(profileImagePicker, animated: true, completion: nil)
+    }
+    
     
     
 
@@ -47,4 +76,31 @@ class ProfileViewController: UIViewController {
     }
     */
 
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+            // Get the image captured by the UIImagePickerController
+            let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+            let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+            
+            let imageData = UIImagePNGRepresentation(editedImage)
+            let imageFile = PFFile(name: "image.png", data: imageData!)
+            
+            // Do something with the images (based on your use case)
+            let currentUser = PFUser.currentUser()
+            currentUser!["ProfileImage"] = imageFile
+            currentUser?.saveInBackground()
+            
+            profileImageView.image = editedImage
+            
+            
+            
+            // Dismiss UIImagePickerController to go back to your original view controller
+            dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    
 }

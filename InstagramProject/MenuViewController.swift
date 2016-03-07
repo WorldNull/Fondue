@@ -49,16 +49,13 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        setGradientBackground()
-    }
-
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        setGradientBackground()
     }
     
     func setGradientBackground() {
@@ -106,11 +103,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let  headerCell = tableView.dequeueReusableCellWithIdentifier("HeaderCell") as! MenuHeaderCell
-        headerCell.profileImageView.image = UIImage(named: "ProfileImage")
-        headerCell.profileNameLabel.text = "Crying"
         
         return headerCell.contentView
     }
+
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 181

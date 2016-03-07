@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import MBProgressHUD
+import Parse
+
 
 class CaptureViewController: UIViewController{
     
@@ -16,6 +19,8 @@ class CaptureViewController: UIViewController{
     @IBOutlet weak var captionTextField: UITextField!
     
     var vc: UIImagePickerController!
+    
+    var posts = [PFObject]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +44,13 @@ class CaptureViewController: UIViewController{
     
     @IBAction func submitPost(sender: AnyObject) {
         if let image = selectedImageView.image {
-            Post.postUserImage(resize(image, newSize: CGSize(width: 150, height: 150)), withCaption: captionTextField.text, withCompletion: nil)
+            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            let post = Post.postUserImage(resize(image, newSize: CGSize(width: 150, height: 150)), withCaption: captionTextField.text, withCompletion: {void in
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+            })
+            posts.append(post)
+            SharingPosts.sharedInstance.posts = posts + SharingPosts.sharedInstance.posts
+            
         }
         
     }
@@ -56,15 +67,15 @@ class CaptureViewController: UIViewController{
         return newImage
     }
     
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
     }
-    */
+
 
 }
 
@@ -76,6 +87,7 @@ extension CaptureViewController: UIImagePickerControllerDelegate, UINavigationCo
             let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
             
             // Do something with the images (based on your use case)
+
             selectedImageView.image = editedImage
             
             
