@@ -24,6 +24,7 @@
 		365F25441C89EB88005F43A3 /* MenuHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F25431C89EB88005F43A3 /* MenuHeaderCell.swift */; };
 		36798AFA1C8C9F31002CC2AC /* SharingPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36798AF91C8C9F31002CC2AC /* SharingPosts.swift */; };
 		36798AFC1C8D2996002CC2AC /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36798AFB1C8D2996002CC2AC /* ProfilePageViewController.swift */; };
+		36798AFE1C8E40AA002CC2AC /* PostHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36798AFD1C8E40AA002CC2AC /* PostHeaderCell.swift */; };
 		6CEAF896F62660A34AC434C9 /* Pods_InstagramProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D531D26F61841D173FC36149 /* Pods_InstagramProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		365F25431C89EB88005F43A3 /* MenuHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHeaderCell.swift; sourceTree = "<group>"; };
 		36798AF91C8C9F31002CC2AC /* SharingPosts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingPosts.swift; sourceTree = "<group>"; };
 		36798AFB1C8D2996002CC2AC /* ProfilePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
+		36798AFD1C8E40AA002CC2AC /* PostHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostHeaderCell.swift; sourceTree = "<group>"; };
 		497BD5F64553B014C24EA4AD /* Pods-InstagramProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramProject/Pods-InstagramProject.debug.xcconfig"; sourceTree = "<group>"; };
 		BFAC84ABAAE2C8938E7169F3 /* Pods-InstagramProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramProject/Pods-InstagramProject.release.xcconfig"; sourceTree = "<group>"; };
 		D531D26F61841D173FC36149 /* Pods_InstagramProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +76,7 @@
 				365F253B1C8763CB005F43A3 /* ProfileViewController.swift */,
 				365F25391C8763BA005F43A3 /* CaptureViewController.swift */,
 				36798AFB1C8D2996002CC2AC /* ProfilePageViewController.swift */,
+				365F25191C854D5E005F43A3 /* AppDelegate.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -94,6 +97,7 @@
 				365F25431C89EB88005F43A3 /* MenuHeaderCell.swift */,
 				365F25311C862818005F43A3 /* MenuCell.swift */,
 				364526F71C8BEC8E001D49BC /* InfiniteScrollActivityView.swift */,
+				36798AFD1C8E40AA002CC2AC /* PostHeaderCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -122,7 +126,6 @@
 				364526F61C8BEC62001D49BC /* Views */,
 				364526F11C8A90C8001D49BC /* Model */,
 				364526EF1C8A9096001D49BC /* View Controllers */,
-				365F25191C854D5E005F43A3 /* AppDelegate.swift */,
 				365F251D1C854D5E005F43A3 /* Main.storyboard */,
 				365F25201C854D5E005F43A3 /* Assets.xcassets */,
 				365F25221C854D5E005F43A3 /* LaunchScreen.storyboard */,
@@ -276,6 +279,7 @@
 				365F252C1C8554C2005F43A3 /* LoginViewController.swift in Sources */,
 				365F25441C89EB88005F43A3 /* MenuHeaderCell.swift in Sources */,
 				365F253A1C8763BA005F43A3 /* CaptureViewController.swift in Sources */,
+				36798AFE1C8E40AA002CC2AC /* PostHeaderCell.swift in Sources */,
 				365F25321C862818005F43A3 /* MenuCell.swift in Sources */,
 				36798AFC1C8D2996002CC2AC /* ProfilePageViewController.swift in Sources */,
 				365F253E1C880E83005F43A3 /* HomeViewController.swift in Sources */,

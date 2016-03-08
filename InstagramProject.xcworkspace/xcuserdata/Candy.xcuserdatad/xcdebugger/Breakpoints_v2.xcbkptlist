@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "InstagramProject/ProfileViewController.swift"
-            timestampString = "479001713.285171"
+            timestampString = "479087778.091121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "didReceiveMemoryWarning()"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "InstagramProject/HomeViewController.swift"
-            timestampString = "479019808.519838"
+            timestampString = "479106241.121255"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
@@ -169,46 +169,91 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "InstagramProject/HomeViewController.swift"
-            timestampString = "479021497.057299"
+            filePath = "InstagramProject/MenuViewController.swift"
+            timestampString = "479101818.889293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "prepareForSegue(_:sender:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "InstagramProject/HomeViewController.swift"
-            timestampString = "479021497.057299"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "tableView(_:viewForHeaderInSection:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "InstagramProject/HomeViewController.swift"
-            timestampString = "479021497.057299"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "tableView(_:viewForHeaderInSection:)"
-            landmarkType = "5">
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "MenuViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "InstagramProject.MenuViewController.hamburgerViewController.getter : Swift.Optional&lt;InstagramProject.HamburgerViewController&gt;"
+                  moduleName = "InstagramProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Candy/Downloads/InstagramProject/InstagramProject/MenuViewController.swift"
+                  timestampString = "479101818.94941"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "InstagramProject.MenuViewController.hamburgerViewController.setter : Swift.Optional&lt;InstagramProject.HamburgerViewController&gt;"
+                  moduleName = "InstagramProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Candy/Downloads/InstagramProject/InstagramProject/MenuViewController.swift"
+                  timestampString = "479101818.949844"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "InstagramProject.MenuViewController.hamburgerViewController.materializeForSet : Swift.Optional&lt;InstagramProject.HamburgerViewController&gt;"
+                  moduleName = "InstagramProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Candy/Downloads/InstagramProject/InstagramProject/MenuViewController.swift"
+                  timestampString = "479101818.950053"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "InstagramProject.MenuViewController.init (InstagramProject.MenuViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; InstagramProject.MenuViewController"
+                  moduleName = "InstagramProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Candy/Downloads/InstagramProject/InstagramProject/MenuViewController.swift"
+                  timestampString = "479101818.950217"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "341">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "InstagramProject.MenuViewController.init (InstagramProject.MenuViewController.Type)(coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;InstagramProject.MenuViewController&gt;"
+                  moduleName = "InstagramProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Candy/Downloads/InstagramProject/InstagramProject/MenuViewController.swift"
+                  timestampString = "479101818.950377"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "238">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

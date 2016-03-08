@@ -20,9 +20,6 @@ class HomeViewController: UIViewController {
     var isMoreDataLoading = false
     var loadingMoreView:InfiniteScrollActivityView?
     var query: PFQuery!
-    var tap: UITapGestureRecognizer!
-    var postProfileView = UIImageView()
-    var postProfileName = String()
 
 
     
@@ -112,27 +109,25 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func handleTap() {
-        performSegueWithIdentifier("ToProfilePage", sender: nil)
-    }
-    
-    
-
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepareForSegue(segue: UIStoryboardSegue, var sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "ToProfilePage" {
-            let vc = segue.destinationViewController as! ProfilePageViewController
-            if let postProfileImage = postProfileView.image {
-                vc.profileImage = postProfileImage
-                vc.profileName = postProfileName
+            if ((sender as? UIImageView) != nil) {
+                sender = sender as? UIImageView
+            } else {
+                sender = sender as? UILabel
                 
-                print("segue: \(postProfileName)")
             }
+            let postHeaderCell = sender?.superview as? PostHeaderCell
+            
+            let vc = segue.destinationViewController as! ProfilePageViewController
+            vc.profileImage = postHeaderCell?.profileImageView.image
+            vc.profileName = postHeaderCell?.profileNameLabel.text
+            
         }
         
     }
@@ -170,74 +165,48 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             return 0
         }
     }
-    
-    
+
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerCell = tableView.dequeueReusableCellWithIdentifier("PostHeaderCell") as! PostHeaderCell
+        headerCell.profileImageView.userInteractionEnabled = true
+        headerCell.profileNameLabel.userInteractionEnabled = true
         
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.width*100))
-        //print(self.view.frame.size.width)
-        headerView.backgroundColor = UIColor(white: 1, alpha: 0.9)
-        
-        let profileView = UIImageView(frame: CGRect(x: 8, y: 4, width: self.view.frame.size.width*0.1, height: self.view.frame.size.width*0.1))
-        profileView.clipsToBounds = true
-        profileView.layer.cornerRadius = self.view.frame.size.width*0.1/2;
-        profileView.layer.borderColor = UIColor(white: 0.7, alpha: 0.8).CGColor
-        profileView.layer.borderWidth = 1;
-        
-        headerView.addSubview(profileView)
-        
-        let nameView = UILabel(frame: CGRect(x: 55, y: 14, width: 250, height: 20))
-        nameView.textColor = UIColor(red: 0, green: 98/255, blue: 193/255, alpha: 1)
-        nameView.font = UIFont.boldSystemFontOfSize(14.0)
-        headerView.addSubview(nameView)
-        
-        let profileImageTap = UITapGestureRecognizer(target: self, action: Selector("handleTap"))
-        let profileNameTap = UITapGestureRecognizer(target: self, action: Selector("handleTap"))
-
-
-        profileView.userInteractionEnabled = true
-        nameView.userInteractionEnabled = true
-        profileView.addGestureRecognizer(profileImageTap)
-        nameView.addGestureRecognizer(profileNameTap)
-        
-        let creationTimeView = UILabel(frame: CGRect(x: self.view.frame.size.width-98, y: 14, width: 200, height: 20))
-        creationTimeView.font = UIFont.boldSystemFontOfSize(12.0)
         let postSection = SharingPosts.sharedInstance.posts![section]
         
         let currentUser = postSection["author"] as! PFUser
         let imageFile = currentUser["ProfileImage"] as? PFFile
-        postProfileName = currentUser.username!
-        print("postProfileName: \(postProfileName)")
         
         if let imageFile = imageFile {
             imageFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
                 if error == nil {
                     if let imageData = imageData {
-                        profileView.image = UIImage(data: imageData)
-                        self.postProfileView.image = profileView.image
+                        headerCell.profileImageView.image = UIImage(data: imageData)
                     }
                 }
             }
         }
-        nameView.text = currentUser.username
+        headerCell.profileNameLabel.text = currentUser.username
         
-
+        
         let date = postSection.createdAt
         var dateFormatter = NSDateFormatter()
         
         //format style. Browse online to get a format that fits your needs.
         dateFormatter.dateFormat = "hh:mm MM/dd/YY"
         var dateString = dateFormatter.stringFromDate(date!)
-        creationTimeView.text = dateString
-        headerView.addSubview(creationTimeView)
+        headerCell.postCreatedAtLabel.text = dateString
 
-        
-        return headerView
+    
+        return headerCell
+      
     }
+
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.0
+        return 0.15 * UIScreen.mainScreen().bounds.size.width
     }
+    
+    
 
 }
 
@@ -288,4 +257,5 @@ extension HomeViewController: UIScrollViewDelegate {
         }
     }
 }
+
 

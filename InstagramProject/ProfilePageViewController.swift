@@ -28,10 +28,22 @@ class ProfilePageViewController: UIViewController {
             profileNameLabel.text = profileName
         }
         
-        profileImageView.layer.cornerRadius = profileImageView.frame.size.height/2
+        print("original profileImage size: \(profileImageView.frame.size)")
         
         self.navigationController?.navigationBar.subviews[1].hidden = true
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.height / 2
+        
+        
+        profileImageView.layer.masksToBounds = true;
+        
+        profileImageView.clipsToBounds = true
+        profileImageView.layer.borderWidth = 3.0;
+        profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
+
     }
 
     override func didReceiveMemoryWarning() {
